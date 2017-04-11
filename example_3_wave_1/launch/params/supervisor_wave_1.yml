@@ -1,0 +1,9 @@
+## Take care not to declare cyclic dependencies, like:
+## A:
+##  depends_on: "B"
+## B:
+##  depends_on: "A"
+externals:
+  baxter_gazebo:
+    baxter_world:
+      launch: "baxter_world.launch"

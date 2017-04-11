@@ -1,0 +1,20 @@
+<launch>
+    <arg name="ns" default="numbers_addition_example"/>
+    <arg name="exec_name" default="wave_1_node"/>
+
+    <!--CAFER-->
+    <arg name="cafer_type" default="wave_supervisor"/>
+    <arg name="managed_uuid" default="none"/>
+    <!--/CAFER-->
+
+    <node name="my_inputs_store" pkg="example_3_wave_1" type="$(arg exec_name)" ns="$(arg ns)" output="screen">
+        <rosparam ns="cafer" subst_value="True">
+            mgmt: "/management_topic"
+            freq: 1.0
+            type: "$(arg cafer_type)"
+            uuid: "$(arg managed_uuid)"
+        </rosparam>
+        <rosparam command="load" file="$(find example_3_wave_1)/launch/params/supervisor_wave_1.yml" ns="components"/>
+        <rosparam command="load" file="$(find example_3_wave_1)/launch/params/wave_1_metadata.yml"/>
+    </node>
+</launch>

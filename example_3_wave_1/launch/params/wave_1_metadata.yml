@@ -1,0 +1,7 @@
+type:  "numbers_storage"
+sequential:  true
+data_structure:
+  numbers:  "joint_values.yml"
+topics:
+  data:
+    numbers: "/robot/joint_states"

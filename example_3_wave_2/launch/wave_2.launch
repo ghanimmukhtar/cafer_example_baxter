@@ -1,0 +1,18 @@
+<launch>
+    <arg name="ns" default="numbers_addition_example"/>
+    <arg name="exec_name" default="wave_2_node"/>
+
+    <!--CAFER-->
+    <arg name="cafer_type" default="$(arg exec_name)"/>
+    <arg name="managed_uuid" default="none"/>
+    <!--/CAFER-->
+
+    <node name="my_numbers_retrieve" pkg="example_3_wave_2" type="$(arg exec_name)" ns="$(arg ns)" output="screen">
+        <rosparam ns="cafer" subst_value="True">
+            mgmt: "/management_topic"
+            freq: 1.0
+            type: "$(arg cafer_type)"
+            uuid: "$(arg managed_uuid)"
+        </rosparam>
+    </node>
+</launch>
